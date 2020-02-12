@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://git.teqnological.asia/sangnguyen/jest-mattermost-reporter"
+    "url": "https://github.com/sangnm0111/jest-mattermost-reporter"
   },
   "author": "Sang Nguyen",
   "license": "ISC"
