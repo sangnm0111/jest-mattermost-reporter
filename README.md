@@ -1,15 +1,13 @@
-Jest test results processor for posting to mattermost.
-
 ### Jest reporter
 
-Using results of jest for posting to mattermost
+Jest test results processor for posting to mattermost.
 
 ### Installation
 
 ---
 
 ```shell
-  npm install jest-html-reporters --save-dev
+  npm install jest-mattermost-reporter --save-dev
 ```
 
 ### Usage
@@ -23,7 +21,7 @@ Configure Jest to process the test results by adding the following entry to the 
   ...,
   "reporters": [
     "default",
-    ["jest-html-reporters", {
+    ["jest-mattermost-reporter", {
       "url": "http://{your-mattermost-site}/hooks/xxx-generatedkey-xxx",
     }]
   ],
