@@ -1,6 +1,6 @@
 {
   "name": "jest-mattermost-reporter",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Help report to mattermost",
   "main": "index.js",
   "scripts": {
