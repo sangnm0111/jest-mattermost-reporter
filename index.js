@@ -1,4 +1,3 @@
-const os = require("os");
 const https = require("https");
 
 // my-custom-reporter.js
@@ -17,16 +16,21 @@ class MyCustomReporter {
         const totalFailed = results.numFailedTests;
         const totalError = results.numRuntimeErrorTestSuites;
         const dateStr = new Date(results.startTime).toLocaleString();
+        const reportLink =`[${process.env.CI_JOB_URL || ''}/artifacts/download](${process.env.CI_JOB_URL || ''}/artifacts/download>)` 
 
         const data = JSON.stringify({
-            text: `#### Test results for ${dateStr}\n<!channel> please review failed tests.\n
-| STATUS           | ${status} ${icon}                 |
-|:---------------- |:----------------------------------|
-| Host name        | ${os.hostname()}                  |
-| Total test cases | ${totalTestCase}                  |
-| Total passed     | ${totalPassed}                    |
-| Total failed     | ${totalFailed}                    |
-| Total error      | ${totalError}                   |`
+            text: `#### Test results for ${dateStr}\n<!channel> please review tests.\n
+| STATUS           | ${status} ${icon}                                      |
+|:---------------- |:-------------------------------------------------------|
+| Report Link      | ${reportLink}                                          |
+| Project Name     | ${process.env.CI_PROJECT_NAME || 'unit test'}          |
+| Latest Commit    | ${process.env.CI_COMMIT_TITLE || ''}                   |
+| Job ID           | ${process.env.CI_JOB_ID || ''}                         |
+| Job Name         | ${process.env.CI_COMMIT_REF_NAME || ''}                |
+| Total test cases | ${totalTestCase}                                       |
+| Total passed     | ${totalPassed}                                         |
+| Total failed     | ${totalFailed}                                         |
+| Total error      | ${totalError}                                          |`
         });
         const req = https.request(
             url,
@@ -39,8 +43,6 @@ class MyCustomReporter {
                 }
             },
             res => {
-                console.log(`statusCode: ${res.statusCode}`);
-
                 res.on("data", d => {
                     process.stdout.write(d);
                 });
