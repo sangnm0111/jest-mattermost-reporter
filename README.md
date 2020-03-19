@@ -34,6 +34,7 @@ Configure Jest to process the test results by adding the following entry to the 
 
 The options below are specific to the reporter.
 
-| Option Name | Type   | Required | Description |
-| :---------- | :----- | :------- | :---------- |
-| `url`       | string | true     | ''          | specify the base path |
+| Option Name | Type   | Required | Default       |
+| :---------- | :----- | :------- | :-------      |
+| `url`       | string | true     | ''            |
+| `worstKey`  | string |          | `[WorstCase]` |
